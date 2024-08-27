@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="서브메뉴">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item android:id="@+id/red" android:title="빨강"/>
+                <item android:id="@+id/blue" android:title="파랑"/>
+                <item android:id="@+id/yellow" android:title="노랑"/>
+            </group>
+            <group android:checkableBehavior="all">
+                <item android:id="@+id/big" android:title="거대한"/>
+            </group>
+        </menu>
+
+    </item>
+</menu>
