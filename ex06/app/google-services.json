@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "97065197336",
+    "firebase_url": "https://kosmo-75aff-default-rtdb.firebaseio.com",
+    "project_id": "kosmo-75aff",
+    "storage_bucket": "kosmo-75aff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97065197336:android:57cb82d84186642849086d",
+        "android_client_info": {
+          "package_name": "com.example.ex06"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC311zhfIL_xyGSsEJdJB-3aiHaymgOdhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

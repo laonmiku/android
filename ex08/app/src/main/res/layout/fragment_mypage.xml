@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MypageFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30sp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="150sp"
+        android:layout_height="150sp"
+        android:src="@drawable/mypage"
+        app:civ_border_width="5sp"
+        app:civ_border_color="#673ab7"
+        android:layout_marginBottom="30sp"
+        android:id="@+id/photo"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="email"
+        android:id="@+id/email"
+        android:enabled="false"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="name"
+        android:id="@+id/name"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="phone"
+        android:id="@+id/phone"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="address"
+        android:id="@+id/address"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="정보수정"
+        android:id="@+id/save"
+        android:layout_marginTop="30sp"/>
+
+
+
+</LinearLayout>

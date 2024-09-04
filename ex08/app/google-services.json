@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "660061278637",
+    "firebase_url": "https://kosmo-b204c-default-rtdb.firebaseio.com",
+    "project_id": "kosmo-b204c",
+    "storage_bucket": "kosmo-b204c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660061278637:android:cadf4033827e2f537a5124",
+        "android_client_info": {
+          "package_name": "com.example.ex07"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmJsQd0lehfizSgks9plOfkqucZAsKjKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660061278637:android:833fb448fb3767687a5124",
+        "android_client_info": {
+          "package_name": "com.example.ex08"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmJsQd0lehfizSgks9plOfkqucZAsKjKI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
