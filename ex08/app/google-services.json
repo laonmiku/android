@@ -1,22 +1,22 @@
 {
   "project_info": {
-    "project_number": "660061278637",
-    "firebase_url": "https://kosmo-b204c-default-rtdb.firebaseio.com",
-    "project_id": "kosmo-b204c",
-    "storage_bucket": "kosmo-b204c.appspot.com"
+    "project_number": "97065197336",
+    "firebase_url": "https://kosmo-75aff-default-rtdb.firebaseio.com",
+    "project_id": "kosmo-75aff",
+    "storage_bucket": "kosmo-75aff.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:660061278637:android:cadf4033827e2f537a5124",
+        "mobilesdk_app_id": "1:97065197336:android:57cb82d84186642849086d",
         "android_client_info": {
-          "package_name": "com.example.ex07"
+          "package_name": "com.example.ex06"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBmJsQd0lehfizSgks9plOfkqucZAsKjKI"
+          "current_key": "AIzaSyC311zhfIL_xyGSsEJdJB-3aiHaymgOdhQ"
         }
       ],
       "services": {
@@ -27,7 +27,26 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:660061278637:android:833fb448fb3767687a5124",
+        "mobilesdk_app_id": "1:97065197336:android:7c95aaec623606f649086d",
+        "android_client_info": {
+          "package_name": "com.example.ex07"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC311zhfIL_xyGSsEJdJB-3aiHaymgOdhQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:97065197336:android:3d2a3d0cca43dbd049086d",
         "android_client_info": {
           "package_name": "com.example.ex08"
         }
@@ -35,7 +54,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBmJsQd0lehfizSgks9plOfkqucZAsKjKI"
+          "current_key": "AIzaSyC311zhfIL_xyGSsEJdJB-3aiHaymgOdhQ"
         }
       ],
       "services": {

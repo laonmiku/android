@@ -2,4 +2,16 @@
     <string name="app_name">ex08</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <array name="flags">
+        <item>@drawable/login</item>
+        <item>@drawable/logout</item>
+        <item>@drawable/mypage</item>
+    </array>
+
+    <string-array name="country">
+        <item>대한민국</item>
+        <item>미국</item>
+        <item>일본</item>
+    </string-array>
 </resources>

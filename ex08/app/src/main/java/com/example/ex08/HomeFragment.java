@@ -2,9 +2,11 @@ package com.example.ex08;
 
 import static com.example.ex08.RemoteService.BASE_URL;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
@@ -16,7 +18,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -37,6 +45,9 @@ public class HomeFragment extends Fragment {
     int total=0;
     JSONArray array=new JSONArray();
     WineAdapter adapter=new WineAdapter();
+    FirebaseAuth mAuth=FirebaseAuth.getInstance();
+    FirebaseUser user=mAuth.getCurrentUser();
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,8 +63,27 @@ public class HomeFragment extends Fragment {
         RecyclerView list=view.findViewById(R.id.list);
         list.setAdapter(adapter);
         StaggeredGridLayoutManager manager=
-                new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.HORIZONTAL);
+                new StaggeredGridLayoutManager(1, StaggeredGridLayoutManager.VERTICAL);
         list.setLayoutManager(manager);
+
+        FloatingActionButton top=view.findViewById(R.id.top);
+        top.setVisibility(View.INVISIBLE);
+        list.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                if(!list.canScrollVertically(1)){
+                    top.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+        top.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                top.setVisibility(View.INVISIBLE);
+                list.scrollToPosition(0);
+            }
+        });
         return view;
     }//onCreateView
 
@@ -93,6 +123,12 @@ public class HomeFragment extends Fragment {
         public void onBindViewHolder(@NonNull WineAdapter.ViewHolder holder, int position) {
             try {
                 JSONObject obj=array.getJSONObject(position);
+
+                HashMap<String,Object> vo=new HashMap<>();
+                vo.put("index", obj.getString("index"));
+                vo.put("image", obj.getString("wine_image"));
+                vo.put("name", obj.getString("wine_name"));
+
                 String image=obj.getString("wine_image");
                 int index = obj.getInt("index");
                 Picasso.with(getActivity()).load(image).into(holder.image);
@@ -105,6 +141,29 @@ public class HomeFragment extends Fragment {
                 holder.type.setText(type);
                 String name=obj.getString("wine_name");
                 holder.name.setText(name);
+                if(user == null){
+                    holder.cart.setVisibility(View.INVISIBLE);
+                }else{
+                    holder.cart.setVisibility(View.VISIBLE);
+                }
+                //장바구니 클릭
+                holder.cart.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        DatabaseReference ref=db.getReference("/cart/" + user.getUid() + "/" + index);
+                        ref.setValue(vo);
+                        Toast.makeText(getActivity(),"등록성공!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                //카드뷰를 클릭한 경우
+                holder.wine.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent=new Intent(getActivity(), ReadActivity.class);
+                        intent.putExtra("index", index);
+                        startActivity(intent);
+                    }
+                });
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }
@@ -116,11 +175,13 @@ public class HomeFragment extends Fragment {
         }
 
         class ViewHolder extends RecyclerView.ViewHolder{
-            ImageView image;
+            ImageView image, cart;
             TextView name, type, country, price, index;
             RatingBar rating;
+            CardView wine;
             public ViewHolder(@NonNull View itemView) {
                 super(itemView);
+                cart = itemView.findViewById(R.id.cart);
                 image=itemView.findViewById(R.id.image);
                 name=itemView.findViewById(R.id.name);
                 type=itemView.findViewById(R.id.type);
@@ -128,6 +189,7 @@ public class HomeFragment extends Fragment {
                 price=itemView.findViewById(R.id.price);
                 rating=itemView.findViewById(R.id.rating);
                 index=itemView.findViewById(R.id.index);
+                wine=itemView.findViewById(R.id.wine);
             }
         }
     }

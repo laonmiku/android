@@ -21,49 +21,46 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
     FirebaseAuth mAuth = FirebaseAuth.getInstance();
-    EditText email,pass;
-
+    EditText email, pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         getSupportActionBar().setTitle("로그인");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        email = findViewById(R.id.email);
-        pass = findViewById(R.id.pass);
-
+        email=findViewById(R.id.email);
+        pass=findViewById(R.id.pass);
+        
         findViewById(R.id.login).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            String strEmail = email.getText().toString();
-            String strPass = pass.getText().toString();
-            mAuth.signInWithEmailAndPassword(strEmail,strPass)
-            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful()){
-                        Toast.makeText(LoginActivity.this,"로그인 성공",Toast.LENGTH_SHORT).show();
-                        finish();
-                        Intent intent = new Intent(LoginActivity.this,MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(LoginActivity.this,"로그인 실패",Toast.LENGTH_SHORT).show();
+                String strEmail=email.getText().toString();
+                String strPass=pass.getText().toString();
+                mAuth.signInWithEmailAndPassword(strEmail,strPass)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this,"로그인성공", Toast.LENGTH_SHORT).show();
+                            finish();
+                            Intent intent=new Intent(LoginActivity.this, MainActivity.class);
+                            startActivity(intent);
+                        }else{
+                            Toast.makeText(LoginActivity.this,"로그인실패", Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
             }
         });
-    }// onCreate
+    }//onCreate
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if(item.getItemId() == android.R.id.home){
+        if(item.getItemId()==android.R.id.home){
             finish();
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent=new Intent(LoginActivity.this, MainActivity.class);
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
     }
-}//activity
+}//Activity
